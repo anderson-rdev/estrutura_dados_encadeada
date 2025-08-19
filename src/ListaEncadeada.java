@@ -1,23 +1,25 @@
-public class ListaEncadeada<T>{
+public class ListaEncadeada {
+    private No<String> cabeca;
 
-    private No<T> inicio;
-    private No<T> ultimo;
-    private int tamanho = 0;
-
-    public int getTamanho() {
-        return tamanho;
+    public void adicionanProximo(No<String> novoNo) {
+        if (cabeca == null) {
+            cabeca = novoNo;
+        } else {
+            No<String> atual = cabeca;
+            while (atual.getProximo() != null) {
+                atual = atual.getProximo();
+            }
+            atual.setProximo(novoNo);
+        }
     }
 
-    public void adicionarInicio(T elemento ) {
-
-        if(this.tamanho == 0){
-            No<T> novoNo = new No<>(elemento);
-            this.inicio = novoNo;
-            this.ultimo = novoNo;
-
-        }else {
-            No<T> novoNo = new No<>(elemento, this.inicio);
+    public void imprimirLista() {
+        No<String> atual = cabeca;
+        while (atual != null) {
+            System.out.print(atual.getValor());
+            if (atual.getProximo() != null) System.out.print(" -> ");
+            atual = atual.getProximo();
         }
-        this.tamanho++;
+        System.out.println();
     }
 }
