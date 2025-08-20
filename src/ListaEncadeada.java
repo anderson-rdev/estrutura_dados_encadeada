@@ -1,8 +1,10 @@
 public class ListaEncadeada {
     private No<String> cabeca;
+    private int tamanho;
+    private No<String>[] elementos;
 
-    // Adicionando registro na sequencia ordenada
-    public void adicionanProximo(No<String> novoNo) {
+    // Adicionando registro na sequencia
+    public void adicionar(No<String> novoNo) {
         if (cabeca == null) {
             cabeca = novoNo;
         } else {
@@ -12,6 +14,16 @@ public class ListaEncadeada {
             }
             atual.setProximo(novoNo);
         }
+    }
+
+    // Buscando registro
+    public int buscar(No<String> novoNo) {
+        for (int i = 0; i < tamanho; i++) {
+            if (elementos[i].getValor().equals(novoNo.getValor())) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     // Exibindo resultado
